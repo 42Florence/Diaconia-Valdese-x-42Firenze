@@ -20,17 +20,17 @@ Aprire il link e accedere con una di queste utenze demo:
 ## Cosa fa l'app
 
 Lato **Admin**:
-- Anagrafica ragazzi con foto, parole-chiave e storico punti settimanali.
+- Anagrafica ragazzi con parole-chiave e storico punti settimanali.
 - Calendari settimanali di **compiti**, **impegni** esterni e **attività** della comunità.
-- **Report giornalieri** per ogni ragazzo, con evidenziazione automatica delle parole-chiave e dettatura vocale.
+- **Report settimanali** per ogni ragazzo, con evidenziazione automatica delle parole-chiave e dettatura vocale.
 - **Statistiche** mensili e tabelle riassuntive dei compiti e dei punti.
 - Gestione dei turni **lavatrice**.
 - Pannello permessi: abilitare/disabilitare singoli moduli e decidere cosa vedono i ragazzi.
-- **Export PDF** di calendari, statistiche e attività dal pulsante flottante in basso.
+- **Export PDF** di calendari e attività dal pulsante flottante in basso.
 
 Lato **Ragazzo**:
 - Vista mobile-first dei propri compiti del giorno, dei punti settimanali e delle attività.
-- Profilo personale con foto, dati e impostazioni di accessibilità (testo più grande, alto contrasto, lingua).
+- Profilo personale con documenti, dati e impostazioni di accessibilità (testo più grande, alto contrasto, lingua). Con possibilità di inviare email precompilate in italiano.
 
 Trasversali:
 - Quattro lingue (it / en / fr / ar).
