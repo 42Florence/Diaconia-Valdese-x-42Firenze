@@ -1,5 +1,8 @@
 # Diaconia
 
+CHECKOUT THE DEPLOYMENT ON [diaconia.sandoramix.dev](https://diaconia.sandoramix.dev)
+Use example account with `admin`:`admin` credentials
+
 Web platform for managing students in a community structure. Tutors manage events, tasks, broadcasts, and monitor student activity. Students participate, chat with tutors, and receive communications.
 
 ## Stack
