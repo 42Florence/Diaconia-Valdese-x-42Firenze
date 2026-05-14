@@ -1,0 +1,154 @@
+/* ===========================
+   MODAL UNIFICATI
+   =========================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+}
+
+/* Contenitore principale */
+.modal-overlay .modal-content {
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  background: #fff;
+}
+
+/* Bordo superiore gradiente – uguale per tutti */
+.modal-accent-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #9b7eb8);
+}
+
+/* Header */
+.modal-overlay .modal-header {
+  border-bottom: none;
+  padding: 1.25rem 1.5rem 0 1.5rem;
+}
+
+.modal-overlay .modal-title {
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.modal-overlay .modal-header .icon-circle {
+  color: #3498db;
+  font-size: 1.3rem;
+}
+
+/* Body */
+.modal-overlay .modal-body {
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+}
+
+.modal-overlay .modal-body .subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+/* Input group unificato */
+.modal-overlay .input-group .input-group-text {
+  background: #fff;
+  border-color: #e2e8f0;
+  border-right: none;
+  border-radius: 10px 0 0 10px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.modal-overlay .form-control {
+  border-color: #e2e8f0;
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  font-size: 0.9rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.modal-overlay .form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12);
+}
+
+.modal-overlay .form-control:focus + .input-group-text,
+.modal-overlay .input-group:focus-within .input-group-text {
+  border-color: #3498db;
+}
+
+/* Label */
+.modal-overlay .form-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.35rem;
+}
+
+/* Bottone primario */
+.modal-overlay .btn-primary {
+  background: #3498db;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.modal-overlay .btn-primary:hover {
+  background: #2d86c7;
+}
+
+/* Link */
+.modal-overlay .modal-link {
+  color: #3498db;
+  text-decoration: none;
+  font-size: 0.82rem;
+  transition: text-decoration 0.2s;
+}
+
+.modal-overlay .modal-link:hover {
+  text-decoration: underline;
+}
+
+/* Alert errore */
+.modal-overlay .alert-danger {
+  font-size: 0.8rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+}
+
+/* Form hint */
+.modal-overlay .form-hint {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+}
+
+/* Pulsante chiusura */
+.modal-overlay .btn-close {
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.modal-overlay .btn-close:hover {
+  opacity: 0.8;
+}
+
+/* Modale registrazione: larghezza contenuta su md, più ampia solo da lg in su */
+.modal-register .modal-dialog {
+  max-width: 500px;   /* default (sm/md) */
+}
+
+@media (min-width: 992px) {
+  .modal-register .modal-dialog {
+    max-width: 800px; /* lg in su: due colonne ben spaziate */
+  }
+}
