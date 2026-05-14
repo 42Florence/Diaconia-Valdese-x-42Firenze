@@ -19,19 +19,16 @@ Aprire il link e accedere con una di queste utenze demo:
 
 ## Se il link non funziona
 
-Se il deploy è offline (es. crediti di hosting esauriti), si può far girare tutto in locale dal codice di questo repository. Serve **Node.js >= 18**.
+Se il deploy è offline (es. crediti di hosting esauriti), si può navigare l'app in locale. Serve **Node.js >= 18** e il codice di questo repository.
 
 ```bash
 npm install
-npm run dev
+npm run dev:frontend
 ```
 
-Questo avvia in parallelo il **frontend** (http://localhost:5173) e il **backend** (http://localhost:3001). Si accede su `localhost:5173` con le stesse credenziali demo della tabella sopra.
+Aprire **http://localhost:5173** e accedere con le stesse credenziali demo della tabella sopra. Il frontend parte in **modalità demo** con dati mock in-memory: navigazione, calendari, compiti, report e tabelle funzionano senza database né backend.
 
-- Il frontend gira in **modalità demo** (dati mock in-memory): tutte le pagine, i calendari, i report e le tabelle funzionano senza database.
-- Il backend serve solo per la **generazione degli export PDF/DOCX** (calendari, attività, lavatrice, report). È un Express stateless: nessuna configurazione richiesta, parte così com'è.
-
-Se interessa solo navigare l'app senza scaricare PDF, basta `npm run dev:frontend`.
+L'unica funzione non disponibile in locale è l'**export PDF/DOCX**, che è generato server-side e richiede la configurazione completa di Supabase + backend. Per provarla, usare il link del deploy.
 
 ## Cosa fa l'app
 
