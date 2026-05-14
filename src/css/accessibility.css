@@ -1,0 +1,120 @@
+/* ===== DISLESSIA ===== */
+
+body.dyslexia-friendly {
+  font-family: 'OpenDyslexic', Arial, sans-serif;
+
+  letter-spacing: 0.12em;
+
+  word-spacing: 0.16em;
+
+  line-height: 1.7;
+}
+
+body.dyslexia-friendly p,
+body.dyslexia-friendly li,
+body.dyslexia-friendly .card-text {
+  max-width: 70ch;
+}
+
+/* ===== ADHD ===== */
+
+body.adhd-friendly .adhd-hide {
+  display: none !important;
+}
+
+body.adhd-friendly .progress-indicator {
+  display: block !important;
+
+  background: #F1F5F9;
+
+  padding: 0.5rem;
+
+  border-radius: 8px;
+
+  margin-bottom: 1rem;
+}
+
+/* ===== AUTISMO ===== */
+
+body.autism-friendly .btn,
+body.autism-friendly .card,
+body.autism-friendly .nav-item-sidebar {
+  transition: none !important;
+
+  animation: none !important;
+}
+
+body.autism-friendly .btn:hover,
+body.autism-friendly .card:hover {
+  transform: none !important;
+}
+
+/* ===== DISCALCULIA ===== */
+
+body.dyscalculia-friendly .number-replace {
+  visibility: hidden;
+
+  position: relative;
+}
+
+body.dyscalculia-friendly .number-replace::after {
+  visibility: visible;
+
+  position: absolute;
+
+  left: 0;
+
+  content: attr(data-text-label);
+
+  white-space: nowrap;
+}
+
+/* ===== EASY MODE ===== */
+
+body.easy-mode .hide-easy {
+  display: none !important;
+}
+
+body.easy-mode .card,
+body.easy-mode .btn {
+  border-radius: 12px;
+
+  box-shadow: none !important;
+}
+
+body.easy-mode .card:hover,
+body.easy-mode .btn:hover {
+  transform: none !important;
+
+  box-shadow: none !important;
+}
+
+body.easy-mode h1,
+body.easy-mode h2 {
+  font-size: 1.5rem;
+
+  margin-bottom: 1rem;
+}
+
+body.easy-mode .btn {
+  min-height: 48px;
+  min-width: 48px;
+
+  font-size: 1.1rem;
+
+  padding: 0.8rem 1.2rem;
+}
+
+/* ===== TESTI SEMPLIFICATI ===== */
+
+[data-simple] .text-simple {
+  display: none;
+}
+
+body.easy-mode [data-simple] .text-original {
+  display: none;
+}
+
+body.easy-mode [data-simple] .text-simple {
+  display: inline;
+}

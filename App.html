@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenSpace - Canale di fiducia per firme assistite</title>
+
+  <!-- Bootstrap 5 CSS — BASE del design system -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!--
+    CSS CUSTOM — caricati DOPO Bootstrap per sovrascrivere dove necessario.
+    Principio: Bootstrap gestisce layout e componenti base.
+    style.css sovrascrive palette, sidebar, card, badge, button.
+    accessibility.css aggiunge modalità speciali (body.dyslexia-friendly, ecc.).
+    landing.css è scoped alla landing e ai modali.
+  -->
+  <link rel="stylesheet" href="src/css/style.css">
+   <link rel="stylesheet" href="src/css/consensoinformato.css">
+  <link rel="stylesheet" href="src/css/accessibility.css">
+  <link rel="stylesheet" href="src/css/landing.css">
+  <link rel="stylesheet" href="src/css/modal.css">
+  <link rel="stylesheet" href="src/css/dashboard.css">
+
+  <style>
+    /* #app-container nascosto fino al login — gestito da JS */
+    #app-container { display: none; }
+  </style>
+</head>
+
+<!--
+  Le classi di accessibilità (dyslexia-friendly, adhd-friendly, ecc.)
+  vengono aggiunte dinamicamente al <body> da AccessibilityContext.js
+  in base alle preferenze salvate dell'utente.
+-->
+<body>
+
+<!-- =============================================================
+     LANDING PAGE
+     ========================================================= -->
+<div id="landing-page">
+  <div class="landing-hero d-flex align-items-center">
+    <div class="container py-5 text-center">
+      <h1 class="display-5 fw-bold mb-3">
+        🛡️ OpenSpace
+      </h1>
+      <p class="lead mb-2">
+        Canale di fiducia per firme assistite
+      </p>
+      <p class="mb-4" style="color: #6B7785; font-weight: 500;">
+        Documenti, consensi, firme. In sicurezza, con chi ti fidi.
+      </p>
+      <button class="btn btn-primary btn-lg px-4" onclick="App.showLogin()">
+        <i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Accedi alla piattaforma
+      </button>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 text-center border-0">
+          <div class="card-body py-4">
+            <div class="mb-3">
+              <i class="fa-solid fa-file-signature" style="font-size: 2rem; color: #3498DB;"></i>
+            </div>
+            <h5>Firma assistita</h5>
+            <p class="small text-muted mb-0">Firma con un pollice, con la voce, o con un testimone. Tu decidi come.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 text-center border-0">
+          <div class="card-body py-4">
+            <div class="mb-3">
+              <i class="fa-solid fa-user-shield" style="font-size: 2rem; color: #3498DB;"></i>
+            </div>
+            <h5>Operatori di fiducia</h5>
+            <p class="small text-muted mb-0">Scegli chi ti affianca. Puoi revocare la fiducia in ogni momento.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 text-center border-0">
+          <div class="card-body py-4">
+            <div class="mb-3">
+              <i class="fa-solid fa-clock-rotate-left" style="font-size: 2rem; color: #3498DB;"></i>
+            </div>
+            <h5>Tracciabilità</h5>
+            <p class="small text-muted mb-0">Ogni accesso e ogni firma sono registrati. Sempre.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <small class="text-muted">
+        Ispirato ai principi della 
+        <a href="https://www.diaconiavaldese.org/" target="_blank">Diaconia Valdese</a> 
+        e alle buone pratiche di mutuo aiuto.
+      </small>
+    </div>
+  </div>
+</div>
+<!-- ==============================================================
+     MODALI UNIFICATI
+     - LOGIN
+     - RECUPERO PASSWORD
+     - REGISTRAZIONE
+     ========================================================= -->
+
+  <!-- ========================== LOGIN ========================== -->
+  <div id="login-modal"
+       class="modal-overlay"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="login-title"
+       data-focus-trap="true"
+       style="display:none">
+
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content">
+
+        <div class="modal-accent-bar"></div>
+
+        <div class="modal-header">
+          <div class="d-flex align-items-center gap-2">
+            <i class="fa-solid fa-shield-halved icon-circle"></i>
+            <h5 class="modal-title" id="login-title">Accedi a OpenSpace</h5>
+          </div>
+          <button type="button" class="btn-close" aria-label="Chiudi finestra di accesso" onclick="App.hideLogin()"></button>
+        </div>
+
+        <div class="modal-body">
+          <p class="subtitle">
+            <i class="fa-solid fa-lock me-1"></i> Accesso protetto. Inserisci le tue credenziali.
+          </p>
+
+          <div id="login-error" class="alert alert-danger py-2 small" role="alert" aria-live="assertive" style="display:none"></div>
+
+          <form onsubmit="App.handleLogin(event); return false" novalidate>
+            <div class="mb-3">
+              <label class="form-label" for="login-email">Email</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+                <input type="email" id="login-email" class="form-control" placeholder="nome@OpenSpace.it" required autocomplete="email">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="login-password">Password</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                <input type="password" id="login-password" class="form-control" placeholder="Password" required autocomplete="current-password">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mb-3">
+              <i class="fa-solid fa-arrow-right-to-bracket me-1"></i> Accedi
+            </button>
+          </form>
+
+          <div class="d-flex justify-content-between small">
+            <a href="#" onclick="App.showRecupero(); return false;" class="modal-link">Password dimenticata?</a>
+            <a href="#" onclick="App.showRegister(); return false;" class="modal-link">Registrati</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= RECUPERO CREDENZIALI =================== -->
+  <div id="recupero-modal"
+       class="modal-overlay"
+       role="dialog" aria-modal="true"
+       aria-labelledby="recupero-title"
+       data-focus-trap="true"
+       style="display:none">
+
+    <div class="modal-dialog modal-dialog-centered modal-md">
+      <div class="modal-content">
+
+        <div class="modal-accent-bar"></div>
+
+        <div class="modal-header">
+          <div class="d-flex align-items-center gap-2">
+            <i class="fa-solid fa-key icon-circle"></i>
+            <h5 class="modal-title" id="recupero-title">Recupera credenziali</h5>
+          </div>
+          <button type="button" class="btn-close" aria-label="Chiudi" onclick="App.hideRecupero()"></button>
+        </div>
+
+        <div class="modal-body">
+          <p class="subtitle">
+            <i class="fa-solid fa-envelope me-1"></i> Inserisci l'email con cui ti sei registrato. Ti invieremo un link per reimpostare la password.
+          </p>
+
+          <form onsubmit="App.handleRecupero(event); return false;" novalidate>
+            <div class="mb-3">
+              <label class="form-label" for="recupero-email">Email</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+                <input type="email" id="recupero-email" class="form-control" placeholder="nome@OpenSpace.it" required autocomplete="email">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mb-2">
+              <i class="fa-solid fa-paper-plane me-1"></i> Invia link di recupero
+            </button>
+          </form>
+
+          <p class="text-center small mt-2 mb-0">
+            <a href="#" onclick="App.hideRecupero(); App.showLogin(); return false;" class="modal-link">
+              <i class="fa-solid fa-arrow-left me-1"></i> Torna al login
+            </a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== REGISTRAZIONE ======================= -->
+  <div id="register-modal"
+       class="modal-overlay modal-register"
+       role="dialog" aria-modal="true"
+       aria-labelledby="register-title"
+       data-focus-trap="true"
+       style="display:none">
+
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-accent-bar"></div>
+
+        <div class="modal-header">
+          <div class="d-flex align-items-center gap-2">
+            <i class="fa-solid fa-user-plus icon-circle"></i>
+            <h5 class="modal-title" id="register-title">Registrati</h5>
+          </div>
+          <button type="button" class="btn-close" aria-label="Chiudi" onclick="App.hideRegister()"></button>
+        </div>
+
+        <div class="modal-body">
+          <form id="register-form" onsubmit="alert('Registrazione simulata!'); App.hideRegister(); return false;" novalidate>
+            <div class="row g-2">
+
+              <!-- Nome | Cognome -->
+              <div class="col-md-6">
+                <label class="form-label" for="register-nome">Nome</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                  <input type="text" id="register-nome" class="form-control" placeholder="Mario" required autocomplete="given-name">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="register-cognome">Cognome</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                  <input type="text" id="register-cognome" class="form-control" placeholder="Rossi" required autocomplete="family-name">
+                </div>
+              </div>
+
+              <!-- Username (full width) -->
+              <div class="col-12">
+                <label class="form-label" for="register-username">
+                  Username <span class="fw-normal text-muted">(alias pubblico)</span>
+                </label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-regular fa-id-card"></i></span>
+                  <input type="text" id="register-username" class="form-control" placeholder="mario.rossi" required autocomplete="username" aria-describedby="username-hint">
+                </div>
+                <div id="username-hint" class="form-hint">Sarà visibile agli altri utenti.</div>
+              </div>
+
+              <!-- Email | Conferma Email -->
+              <div class="col-md-12">
+                <label class="form-label" for="register-email">Email</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+                  <input type="email" id="register-email" class="form-control" placeholder="nome@OpenSpace.it" required autocomplete="email">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <label class="form-label" for="register-email-confirm">Conferma email</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+                  <input type="email" id="register-email-confirm" class="form-control" placeholder="nome@OpenSpace.it" required autocomplete="email">
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="col-12">
+                <label class="form-label" for="register-password">Password</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-solid fa-key"></i></span>
+                  <input type="password" id="register-password" class="form-control" placeholder="Scegli una password" required autocomplete="new-password">
+                </div>
+              </div>
+
+              <div class="col-12 mt-1">
+                <button type="submit" class="btn btn-primary w-100">
+                  <i class="fa-solid fa-user-plus me-1"></i> Registrati
+                </button>
+              </div>
+
+            </div>
+          </form>
+
+          <p class="text-center small mt-3 mb-0">
+            Hai già un account?
+            <a href="#" onclick="App.hideRegister(); App.showLogin(); return false;" class="modal-link">Accedi</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<!-- =============================================================
+     APP CONTAINER
+     ========================================================= -->
+<div id="app-container">
+  <div class="container-fluid">
+    <div class="row">
+      <aside
+        class="col-lg-2 d-none d-lg-block sidebar-desktop"
+        style="min-height:100vh; position:sticky; top:0; z-index:1020;"
+        aria-label="Navigazione principale"
+      >
+        <div class="py-4 px-3">
+
+          <!-- var(--primary) invece di #1E5A8B hardcodato -->
+          <div class="fw-bold fs-5 mb-4 d-flex align-items-center gap-2" style="color:var(--primary)">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+            <span>OpenSpace</span>
+          </div>
+
+          <nav aria-label="Menu principale">
+            <!--
+              BOOTSTRAP: d-flex align-items-center gap-2 px-3 py-2 per layout.
+              CUSTOM: nav-item-sidebar → colore rgba(255,255,255,0.85), hover,
+                active con border-left primary.
+              RIMOSSO: text-dark → forzava nero su sfondo scuro (contrasto ~1.5:1,
+                sotto il minimo WCAG AA di 4.5:1).
+              RIMOSSO: rounded-2 → duplicava border-radius già in nav-item-sidebar.
+              RIMOSSO: role="link" su <a> → ridondante, può confondere gli SR.
+              fa-fw garantisce larghezza fissa alle icone → allineamento preciso.
+            -->
+            <a href="#"
+              class="nav-item-sidebar text-decoration-none d-flex align-items-center gap-2 px-3 py-2"
+              data-view="home"
+              aria-current="page"
+            >
+              <i class="fa-solid fa-house fa-fw" aria-hidden="true"></i>Home
+            </a>
+            <a href="#"
+              class="nav-item-sidebar text-decoration-none d-flex align-items-center gap-2 px-3 py-2"
+              data-view="documenti"
+            >
+              <i class="fa-solid fa-file-lines fa-fw" aria-hidden="true"></i>Documenti
+            </a>
+            <a href="#"
+              class="nav-item-sidebar text-decoration-none d-flex align-items-center gap-2 px-3 py-2"
+              data-view="messaggi"
+            >
+              <i class="fa-solid fa-comments fa-fw" aria-hidden="true"></i>Messaggi
+            </a>
+            <a href="#"
+              class="nav-item-sidebar text-decoration-none d-flex align-items-center gap-2 px-3 py-2"
+              data-view="profile"
+            >
+              <i class="fa-solid fa-user fa-fw" aria-hidden="true"></i>Profilo
+            </a>
+            <a href="#"
+              class="nav-item-sidebar text-decoration-none d-flex align-items-center gap-2 px-3 py-2"
+              data-view="impostazioni"
+            >
+              <i class="fa-solid fa-gear fa-fw" aria-hidden="true"></i>Impostazioni
+            </a>
+
+            <!-- aria-hidden: il separatore è decorativo, non va annunciato dagli SR -->
+            <hr aria-hidden="true" class="my-2" style="border-color:rgba(255,255,255,0.15)">
+
+            <a id="nav-dashboard" href="#"
+              class="nav-item-sidebar text-decoration-none d-flex align-items-center gap-2 px-3 py-2">
+              <i class="fa-solid fa-chart-line fa-fw" aria-hidden="true"></i>Dashboard
+            </a>
+          </nav>
+
+        </div>
+      </aside><!-- /sidebar -->
+
+
+      <!-- Contenuto principale -->
+      <main
+        id="app-content"
+        class="col-lg-10"
+        aria-live="polite"
+        aria-label="Contenuto principale"
+        style="padding-bottom:80px"
+      ></main>
+
+    </div>
+  </div>
+
+
+  <!-- ===== BOTTOM NAV MOBILE =====
+       BOOTSTRAP: fixed-bottom d-lg-none → posizionamento e breakpoint.
+       CUSTOM: bottom-nav → background, border-top (--border-soft), shadow.
+       RIMOSSO: navbar navbar-light bg-white border-top → ridondanti con bottom-nav.
+         Il !important in style.css era sintomo di questo conflitto, ora rimovibile.
+       RIMOSSO: role="link" su <a> → ridondante.
+  -->
+  <nav
+    id="bottom-nav"
+    class="bottom-nav fixed-bottom d-lg-none"
+    aria-label="Navigazione rapida"
+  >
+    <div class="container">
+      <div class="d-flex justify-content-around w-100 py-1">
+
+        <a href="#"
+          class="nav-item text-decoration-none d-flex flex-column align-items-center active"
+          data-view="home"
+          aria-current="page"
+        >
+          <i class="fa-solid fa-house" style="font-size:1.2rem" aria-hidden="true"></i>
+          <span style="font-size:0.65rem;margin-top:2px">Home</span>
+        </a>
+
+        <a href="#"
+          class="nav-item text-decoration-none d-flex flex-column align-items-center"
+          data-view="documenti"
+        >
+          <i class="fa-solid fa-file-lines" style="font-size:1.2rem" aria-hidden="true"></i>
+          <span style="font-size:0.65rem;margin-top:2px">Documenti</span>
+        </a>
+
+        <a href="#"
+          class="nav-item text-decoration-none d-flex flex-column align-items-center"
+          data-view="messaggi"
+        >
+          <i class="fa-solid fa-comments" style="font-size:1.2rem" aria-hidden="true"></i>
+          <span style="font-size:0.65rem;margin-top:2px">Messaggi</span>
+        </a>
+
+        <a href="#"
+          class="nav-item text-decoration-none d-flex flex-column align-items-center"
+          data-view="profile"
+        >
+          <i class="fa-solid fa-user" style="font-size:1.2rem" aria-hidden="true"></i>
+          <span style="font-size:0.65rem;margin-top:2px">Profilo</span>
+        </a>
+
+      </div>
+    </div>
+  </nav><!-- /bottom-nav -->
+
+</div><!-- /app-container -->
+
+
+<!-- ========== SCRIPTS ========== -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="src/js/data/mock.js"></script>
+<script src="src/js/context/AuthContext.js"></script>
+<script src="src/js/context/AccessibilityContext.js"></script>
+<script src="src/js/components/CalendarioWidget.js"></script>
+<script src="src/js/components/Badge.js"></script>
+<script src="src/js/components/EmptyState.js"></script>
+<script src="src/js/components/DocumentCard.js"></script>
+<script src="src/js/components/FirmaWidget.js"></script>
+<script src="src/js/components/FeedbackWidget.js"></script>
+<script src="src/js/pages/Home.js"></script>
+<script src="src/js/pages/Documenti.js"></script>
+<script src="src/js/pages/Richieste.js"></script>
+<script src="src/js/pages/DettaglioDocumento.js"></script>
+<script src="src/js/pages/Operatori.js"></script>
+<script src="src/js/pages/Log.js"></script>
+<script src="src/js/pages/Calendar.js"></script>
+<script src="src/js/pages/Profile.js"></script>
+<script src="src/js/pages/PublicProfile.js"></script>
+<script src="src/js/pages/Impostazioni.js"></script>
+<script src="src/js/pages/DashboardOperatore.js"></script>
+<script src="src/js/pages/DashboardSupervisore.js"></script>
+<script src="src/js/pages/Messaggi.js"></script>
+<script src="src/js/pages/Videochiamata.js"></script>
+<script src="src/js/router.js"></script>
+<script src="src/js/app.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    App.init();
+  });
+</script>
+
+</body>
+</html>

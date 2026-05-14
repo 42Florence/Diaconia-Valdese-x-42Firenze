@@ -1,0 +1,278 @@
+
+/* ===== PALETTE ===== */
+
+:root {
+  --primary: #3498DB;
+  --primary-light: #EAF4FB;
+
+  --secondary: #8E5BD8;
+  --secondary-light: #F1E8FB;
+
+  --success: #2E8B57;
+  --success-light: #E6F4EC;
+
+  --warning: #C68A18;
+  --warning-light: #FFF4E0;
+
+  --danger: #C62828;
+  --danger-light: #FFEBEE;
+
+  --info: #8CAEC4;
+  --info-light: #F0F5F8;
+
+  --text-primary: #333333;
+  --text-muted: #6B7785;
+
+  --bg-light: #F8FAFC;
+  --bg-white: #FFFFFF;
+
+  --border-color: #E0E0E0;
+  --border-soft: #ECEEF1;
+
+  --sidebar-bg: #2C3E50;
+  --sidebar-hover: #34495E;
+
+  --focus-outline: 3px solid #FFC107;
+}
+
+/* ===== BODY ===== */
+
+body {
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+
+  color: var(--text-primary);
+
+  line-height: 1.5;
+
+  font-size: 14px;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== TITOLI ===== */
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Poppins', sans-serif;
+
+  letter-spacing: -0.2px;
+
+  color: var(--text-primary);
+}
+
+/* ===== FOCUS ===== */
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar-desktop {
+  background: var(--sidebar-bg);
+
+  border-right: none;
+
+  box-shadow:
+    2px 0 12px rgba(15,23,32,0.08);
+
+  transition: all 0.2s ease;
+}
+
+.nav-item-sidebar {
+  color: rgba(255,255,255,0.85);
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+
+  font-weight: 500;
+
+  font-size: 0.95rem;
+
+  border-radius: 8px;
+
+  margin-bottom: 4px;
+}
+
+.nav-item-sidebar:hover {
+  background-color: var(--sidebar-hover);
+
+  color: #ffffff;
+}
+
+.nav-item-sidebar.active {
+  background-color: var(--sidebar-hover);
+
+  color: #ffffff;
+
+  border-left: 3px solid var(--primary);
+
+  font-weight: 600;
+}
+
+/* ===== BOTTOM NAV ===== */
+
+.bottom-nav {
+  background-color: #ffffff;
+
+  border-top: 1px solid var(--border-soft);
+
+  box-shadow:
+    0 -2px 10px rgba(15,23,32,0.05);
+}
+
+/* ===== NAV ===== */
+
+.nav-item {
+  color: var(--text-muted);
+
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--primary);
+}
+
+/* ===== AVATAR ===== */
+
+.avatar-circle,
+.avatar-large {
+  background:
+    linear-gradient(135deg,#3498DB,#2C3E50);
+
+  color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 600;
+}
+
+.avatar-circle {
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+
+  font-size: 1rem;
+}
+
+.avatar-large {
+  width: 90px;
+  height: 90px;
+
+  border-radius: 50%;
+
+  font-size: 2rem;
+
+  margin: 0 auto;
+}
+
+/* ===== CARD ===== */
+
+.card {
+  background: #ffffff;
+
+  border: 1px solid var(--border-soft);
+
+  border-radius: 12px;
+
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+
+  box-shadow:
+    0 1px 2px rgba(15,23,32,0.03);
+}
+
+.card:hover {
+  box-shadow:
+    0 6px 18px rgba(15,23,32,0.08);
+
+  transform: translateY(-1px);
+}
+
+/* ===== BADGE ===== */
+
+.badge {
+  border-radius: 999px;
+
+  padding: 0.35em 0.7em;
+
+  font-weight: 500;
+}
+
+.badge-success {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.badge-warning {
+  background-color: var(--warning-light);
+  color: var(--warning);
+}
+
+.badge-danger {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.badge-primary {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+/* ===== SECTION TITLE ===== */
+
+.section-title {
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  color: var(--text-primary);
+
+  margin-bottom: 12px;
+}
+
+/* ===== VIDEO GRID ===== */
+
+.video-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(200px,1fr));
+
+  gap: 1rem;
+}
+
+/* ===== SR ONLY ===== */
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  overflow: hidden;
+}
+
+/* ===== ALTO CONTRASTO ===== */
+
+body.alto-contrasto {
+  --text-primary: #000000;
+  --text-muted: #333333;
+  --bg-light: #FFFFFF;
+  --primary: #003366;
+  --border-color: #000000;
+}
+
+body.alto-contrasto .card {
+  border-width: 2px;
+}
+
+/* Puoi ora rimuovere da style.css il !important su .bottom-nav
+   background-color, dato che il conflitto con bg-white Bootstrap
+   è risolto rimuovendo la classe dalla struttura HTML. */
