@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Titillium+Web:wght@300;400;600;700&family=Roboto:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #5c3981;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #75519b;
+  --color-on-primary-container: #ecd5ff;
+  
+  --color-secondary: #6a548c;
+  --color-secondary-container: #d8befe;
+  --color-on-secondary-container: #5f4a81;
+  
+  --color-tertiary: #98001a;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #bf1a2a;
+  
+  --color-cta-red: #F04148;
+  
+  --color-surface-tint: #724e98;
+  --color-surface: #fff7fc;
+  --color-on-surface: #211924;
+  --color-on-surface-variant: #4b444f;
+  
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #feefff;
+  --color-surface-container: #f8e9fa;
+  --color-surface-container-high: #f2e3f4;
+  --color-surface-container-highest: #eddeef;
+  
+  --color-outline: #7c7480;
+  --color-outline-variant: #cdc3d1;
+
+  --font-serif: "EB Garamond", serif;
+  --font-sans: "Titillium Web", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+
+  --radius-xl: 1.5rem;
+  --radius-lg: 1rem;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-surface text-on-surface;
+  }
+}
+
+.font-garamond {
+  font-family: var(--font-serif);
+}
+
+.font-roboto {
+  font-family: var(--font-roboto);
+}
