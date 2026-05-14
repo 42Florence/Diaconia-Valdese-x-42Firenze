@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>CommunityCare — Ospite</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Lexend:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style/ospite.css">
+</head>
+<body>
+<div class="phone-shell">
+  <div class="bg-blobs">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+  <div class="app-inner">
+    <div class="hero-section">
+      <div class="hero-top">
+        <div class="avatar-ring"><div class="avatar-inner">👦</div></div>
+        <div class="hero-info">
+          <div class="hero-greeting">Sabato, 9 maggio</div>
+          <h1 class="hero-name">Ciao, Marco!</h1>
+        </div>
+      </div>
+      <div class="xp-wrap">
+        <div class="xp-top">
+          <div class="xp-left"><span class="xp-fire">⚡</span><span class="xp-label">Punteggio settimanale</span></div>
+          <span class="xp-count">620 / 1000 XP</span>
+        </div>
+        <div class="xp-bar-track"><div class="xp-bar-fill"></div></div>
+        <div class="xp-bottom">
+        </div>
+      </div>
+    </div>
+
+    <div class="content-area">
+
+      <div id="panel-tasks" class="panel active" role="tabpanel" aria-labelledby="nav-tasks">
+        <div class="mood-card">
+          <h2 class="mood-title">Oggi mi sento?</h2>
+          <div class="mood-options" role="group" aria-label="Seleziona il tuo umore">
+            <button class="mood-btn sad" type="button" aria-label="Triste"><span aria-hidden="true">😢</span><small>Triste</small></button>
+            <button class="mood-btn neutral active" type="button" aria-label="Normale"><span aria-hidden="true">😐</span><small>Normale</small></button>
+            <button class="mood-btn happy" type="button" aria-label="Felice"><span aria-hidden="true">🙂</span><small>Felice</small></button>
+          </div>
+        </div>
+        <div class="section-head">
+          <h2 class="section-title"><i class="ti ti-clipboard-check" aria-hidden="true"></i>Cose da fare oggi</h2>
+          <div class="section-count" id="today-task-count">2/5 fatte</div>
+        </div>
+        <div class="view-toggle tasks-view-toggle">
+          <button class="vt-btn active" data-section="tasks-list" type="button"><i class="ti ti-clipboard-list"></i>Da fare</button>
+          <button class="vt-btn" data-section="extra-list" type="button"><i class="ti ti-sparkles"></i>Extra</button>
+        </div>
+        <div class="task-card" id="today-task-list" role="list">
+          <div class="task-row done" data-task-row data-completed="true" role="button" tabindex="0" aria-label="Rifare il letto - Completato">
+            <div class="check-circle" aria-hidden="true"></div>
+            <div class="task-ico-wrap" style="background:#E3F9EE"><span aria-hidden="true" style="font-size:28px;line-height:1">🛏️</span></div>
+            <div class="task-text">Rifare il letto</div>
+            <div class="xp-tag earned">+10 XP</div>
+          </div>
+          <div class="task-row done" data-task-row data-completed="true" role="button" tabindex="0" aria-label="Prendere le medicine - Completato">
+            <div class="check-circle" aria-hidden="true"></div>
+            <div class="task-ico-wrap" style="background:#EEF0FF"><span aria-hidden="true" style="font-size:28px;line-height:1">💊</span></div>
+            <div class="task-text">Prendere le medicine</div>
+            <div class="xp-tag earned">+15 XP</div>
+          </div>
+          <div class="task-row" data-task-row data-completed="false" role="button" tabindex="0" aria-label="Pulire il bagno - Non completato">
+            <div class="check-circle" aria-hidden="true"></div>
+            <div class="task-ico-wrap" style="background:#FFF0EE"><span aria-hidden="true" style="font-size:28px;line-height:1">🧹</span></div>
+            <div class="task-text">Pulire il bagno</div>
+            <div class="xp-tag">+20 XP</div>
+          </div>
+          <div class="task-row" data-task-row data-completed="false" role="button" tabindex="0" aria-label="Riordinare la camera - Non completato">
+            <div class="check-circle" aria-hidden="true"></div>
+            <div class="task-ico-wrap" style="background:#F0EBFF"><span aria-hidden="true" style="font-size:28px;line-height:1">🧺</span></div>
+            <div class="task-text">Riordinare la camera</div>
+            <div class="xp-tag">+15 XP</div>
+          </div>
+          <div class="task-row" data-task-row data-completed="false" role="button" tabindex="0" aria-label="Preparare la cena - Non completato">
+            <div class="check-circle" aria-hidden="true"></div>
+            <div class="task-ico-wrap" style="background:#FFF8E7"><span aria-hidden="true" style="font-size:28px;line-height:1">🍳</span></div>
+            <div class="task-text">Preparare la cena</div>
+            <div class="xp-tag">+25 XP</div>
+          </div>
+        </div>
+        <div class="task-card" id="extra-task-list" style="display:none">
+          <div class="task-row done" data-task-row data-completed="true" role="button" tabindex="0" aria-label="Letto un libro - Completato">
+            <div class="check-circle"></div>
+            <div class="task-ico-wrap" style="background:#EEF0FF"><span aria-hidden="true" style="font-size:28px;line-height:1">📚</span></div>
+            <div class="task-text">Letto un libro</div>
+            <div class="xp-tag earned">+30 XP</div>
+          </div>
+          <div class="task-row" data-task-row data-completed="false" role="button" tabindex="0" aria-label="Sono andato a passeggiare - Non completato">
+            <div class="check-circle"></div>
+            <div class="task-ico-wrap" style="background:#E3F9EE"><span aria-hidden="true" style="font-size:28px;line-height:1">🚶</span></div>
+            <div class="task-text">Sono andato a passeggiare</div>
+            <div class="xp-tag">+20 XP</div>
+          </div>
+          <div class="task-row" data-task-row data-completed="false" role="button" tabindex="0" aria-label="Sono andato al lavoro - Non completato">
+            <div class="check-circle"></div>
+            <div class="task-ico-wrap" style="background:#FFF0EE"><span aria-hidden="true" style="font-size:28px;line-height:1">💼</span></div>
+            <div class="task-text">Sono andato al lavoro</div>
+            <div class="xp-tag">+50 XP</div>
+          </div>
+          <div class="task-row" data-task-row data-completed="false" role="button" tabindex="0" aria-label="Ho partecipato a un'attività - Non completato">
+            <div class="check-circle"></div>
+            <div class="task-ico-wrap" style="background:#FFF8E7"><span aria-hidden="true" style="font-size:28px;line-height:1">👥</span></div>
+            <div class="task-text">Ho partecipato a un'attività</div>
+            <div class="xp-tag">+25 XP</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-agenda" class="panel" role="tabpanel" aria-labelledby="nav-agenda">
+        <div class="section-head">
+          <h2 class="section-title"><i class="ti ti-calendar" aria-hidden="true"></i>Agenda</h2>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="view-mode-toggle">
+              <button class="view-btn active" data-view="week"><i class="ti ti-calendar-week"></i>Sett</button>
+              <button class="view-btn" data-view="month"><i class="ti ti-calendar-month"></i>Mese</button>
+            </div>
+            <button class="add-reminder-btn" type="button"><i class="ti ti-plus"></i></button>
+          </div>
+        </div>
+        <div id="agenda-container">
+          <div class="agenda-view week-view active" id="week-view"></div>
+          <div class="agenda-view month-view" id="month-view"></div>
+        </div>
+      </div>
+
+      <div id="panel-premi" class="panel" role="tabpanel" aria-labelledby="nav-premi">
+        <div class="section-head">
+          <h2 class="section-title"><i class="ti ti-trophy" style="color:var(--gold)" aria-hidden="true"></i>I tuoi premi</h2>
+          <div class="section-count" style="background:var(--gold)">620 XP</div>
+        </div>
+        <div class="rewards-grid" role="list" aria-label="Lista premi disponibili">
+          <div class="reward-item" role="listitem" aria-label="Serata film - Disponibile - 200 XP">
+            <div class="reward-ico" style="background:#FFF8E7" aria-hidden="true">🎬</div>
+            <div class="reward-info"><div class="reward-name">Serata film</div><div class="reward-desc">Scegli il film della settimana</div></div>
+            <div class="reward-cost">200 XP</div>
+          </div>
+          <div class="reward-item" role="listitem" aria-label="Pizza speciale - Disponibile - 400 XP">
+            <div class="reward-ico" style="background:#E3F9EE" aria-hidden="true">🍕</div>
+            <div class="reward-info"><div class="reward-name">Pizza speciale</div><div class="reward-desc">Pizza a scelta per cena</div></div>
+            <div class="reward-cost">400 XP</div>
+          </div>
+          <div class="reward-item locked" role="listitem" aria-label="Ore libere extra - Bloccato - 800 XP">
+            <div class="reward-ico" style="background:#F0EEF8" aria-hidden="true">🎮</div>
+            <div class="reward-info"><div class="reward-name">Ore libere extra</div><div class="reward-desc">2h di tempo libero in più</div></div>
+            <div class="reward-cost"><i class="ti ti-lock" style="font-size:12px" aria-label="Bloccato"></i> 800 XP</div>
+          </div>
+          <div class="reward-item locked" role="listitem" aria-label="Gita fuori porta - Bloccato - 1200 XP">
+            <div class="reward-ico" style="background:#F0EEF8" aria-hidden="true">🚌</div>
+            <div class="reward-info"><div class="reward-name">Gita fuori porta</div><div class="reward-desc">Un pomeriggio in città</div></div>
+            <div class="reward-cost"><i class="ti ti-lock" style="font-size:12px" aria-label="Bloccato"></i> 1200 XP</div>
+          </div>
+          <div class="reward-item locked" role="listitem" aria-label="Paghetta settimanale - Bloccato 1600 XP">
+            <div class="reward-ico" style="background:#E3F9EE" aria-hidden="true">💸</div>
+            <div class="reward-info"><div class="reward-name">Paghetta settimanale</div><div class="reward-desc">Senza lilleri non si lallera</div></div>
+            <div class="reward-cost"><i class="ti ti-lock" style="font-size:12px" aria-label="Bloccato"></i> 1600 XP</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-notifiche" class="panel" role="tabpanel" aria-labelledby="nav-notifiche">
+        <div class="section-head">
+          <h2 class="section-title"><i class="ti ti-bell" aria-hidden="true"></i>Notifiche</h2>
+          <div class="section-count">3 nuove</div>
+        </div>
+        <div class="notif-list" role="list" aria-label="Lista notifiche">
+          <article class="notif-item award" role="listitem" aria-label="Notifica premio: Sara ti ha assegnato il premio Studente dell'anno. Hai guadagnato +50 XP bonus! Oggi, 09:15">
+            <div class="notif-avatar" style="background:#FFF8E7;font-size:20px" aria-hidden="true">🏆</div>
+            <div class="notif-body">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <h3 class="notif-sender">Premio ricevuto!</h3>
+                <span class="notif-badge premio" aria-label="Tipo: Premio">Premio</span>
+              </div>
+              <p class="notif-msg">Sara ti ha assegnato il premio "Studente dell'anno". Hai guadagnato +50 XP bonus!</p>
+              <time class="notif-time">Oggi, 09:15</time>
+            </div>
+          </article>
+          <article class="notif-item unread" role="listitem" aria-label="Nuova notifica da Sara educatrice: Bravo Marco! Hai completato tutti i tuoi compiti questa settimana! Oggi, 08:30">
+            <div class="notif-avatar" style="background:#EEF0FF" aria-hidden="true"><i class="ti ti-user" style="color:var(--brand);font-size:16px"></i></div>
+            <div class="notif-body">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <h3 class="notif-sender">Sara (educatrice)</h3>
+                <span class="notif-badge new" aria-label="Stato: Nuovo">Nuovo</span>
+              </div>
+              <p class="notif-msg">Bravo Marco! Hai completato tutti i tuoi compiti questa settimana!</p>
+              <time class="notif-time">Oggi, 08:30</time>
+            </div>
+          </article>
+          <article class="notif-item unread" role="listitem" aria-label="Nuovo promemoria: Appuntamento medico giovedì alle 10:00. Non dimenticare! Ieri, 18:00">
+            <div class="notif-avatar" style="background:#E3F9EE" aria-hidden="true"><i class="ti ti-calendar" style="color:var(--green);font-size:16px"></i></div>
+            <div class="notif-body">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <h3 class="notif-sender">Promemoria</h3>
+                <span class="notif-badge new" aria-label="Stato: Nuovo">Nuovo</span>
+              </div>
+              <p class="notif-msg">Appuntamento medico giovedì alle 10:00. Non dimenticare!</p>
+              <time class="notif-time">Ieri, 18:00</time>
+            </div>
+          </article>
+          <article class="notif-item" role="listitem" aria-label="Notifica streak: Hai raggiunto 5 giorni di fila. Sei il migliore! Ieri, 21:00">
+            <div class="notif-avatar" style="background:#F0EBFF" aria-hidden="true"><i class="ti ti-flame" style="color:var(--purple);font-size:16px"></i></div>
+            <div class="notif-body">
+              <h3 class="notif-sender">Streak!</h3>
+              <p class="notif-msg">Hai raggiunto 5 giorni di fila. Sei il migliore!</p>
+              <time class="notif-time">Ieri, 21:00</time>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div id="panel-anonymous" class="panel" role="tabpanel" aria-labelledby="nav-anonymous">
+        <div class="section-head">
+          <h2 class="section-title"><i class="ti ti-mail" aria-hidden="true"></i>Messaggio anonimo</h2>
+        </div>
+        <div class="anon-wrap">
+          <div class="anon-intro">
+            <p>Scrivi un messaggio anonimo agli educatori. Massimo 1 messaggio al giorno!</p>
+          </div>
+          <div class="anon-form">
+            <label for="anon-message" class="sr-only">Messaggio anonimo</label>
+            <textarea id="anon-message" class="anon-input" placeholder="Scrivi il tuo messaggio..." rows="5" aria-label="Scrivi il tuo messaggio anonimo"></textarea>
+            <button class="anon-send-btn" type="button" onclick="sendAnonMessage()" aria-label="Invia messaggio anonimo agli educatori"><i class="ti ti-send" aria-hidden="true"></i>Invia anonimamente</button>
+          </div>
+          <div class="anon-messages">
+            <h3 class="anon-msg-title">Messaggi inviati</h3>
+            <div id="anon-sent-list" class="anon-msg-list" role="list" aria-label="Lista messaggi inviati">
+              <article class="anon-msg-item" role="listitem" aria-label="Messaggio anonimo inviato oggi alle 11:30. Testo: Samuele ultimamente si sta comportando male con gli altri ospiti. Stato: Consegnato">
+                <time class="anon-msg-time">Oggi, 11:30</time>
+                <p class="anon-msg-text">Samuele ultimamente si sta' comportando male con gli altri ospiti!</p>
+                <span class="anon-msg-status" aria-label="Stato messaggio">✓ Consegnato</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-profilo" class="panel" role="tabpanel" aria-labelledby="nav-profilo">
+        <h2 class="sr-only">Profilo personale</h2>
+        <div class="profile-hero">
+          <div class="profile-photo-wrap">
+            <div id="profile-image-preview" class="profile-photo-preview" aria-label="Immagine profilo">👦</div>
+            <input id="profile-image-input" class="profile-image-input" type="file" accept="image/*" aria-label="Carica immagine profilo">
+          </div>
+          <div class="profile-hero-copy">
+            <div class="profile-name" id="profile-header-name">Marco Bianchi</div>
+            <div class="profile-sub" id="profile-header-sub">Struttura Azzurra · Camera 1</div>
+            <div class="profile-actions-row">
+              <label class="profile-btn upload" for="profile-image-input"><i class="ti ti-camera" style="font-size:14px"></i> Cambia foto</label>
+              <button type="button" class="profile-btn secondary" id="profile-image-reset"><i class="ti ti-trash" style="font-size:14px"></i> Rimuovi foto</button>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="profile-form-card">
+          <div class="profile-form-grid">
+            <div class="profile-field">
+              <label class="profile-label" for="profile-first-name">Nome</label>
+              <input class="profile-input" id="profile-first-name" type="text" value="Marco">
+            </div>
+            <div class="profile-field">
+              <label class="profile-label" for="profile-last-name">Cognome</label>
+              <input class="profile-input" id="profile-last-name" type="text" value="Bianchi">
+            </div>
+            <div class="profile-field">
+              <label class="profile-label" for="profile-email">Email</label>
+              <input class="profile-input" id="profile-email" type="email" value="marco.bianchi@communitycare.it">
+            </div>
+            <div class="profile-field">
+              <label class="profile-label" for="profile-phone">Numero di cellulare</label>
+              <input class="profile-input" id="profile-phone" type="tel" value="+39 333 987 6543">
+            </div>
+            <div class="profile-field">
+              <label class="profile-label" for="profile-structure">Struttura</label>
+              <input class="profile-input" id="profile-structure" type="text" value="Struttura Azzurra">
+            </div>
+            <div class="profile-field">
+              <label class="profile-label" for="profile-room">Camera</label>
+              <input class="profile-input" id="profile-room" type="text" value="Camera 1">
+            </div>
+            <div class="profile-field profile-span-2">
+              <label class="profile-label" for="profile-address">Indirizzo</label>
+              <input class="profile-input" id="profile-address" type="text" value="Via delle Ginestre 12, Torino">
+            </div>
+            <div class="profile-field profile-span-2">
+              <label class="profile-label" for="profile-bio">Bio / Note</label>
+              <textarea class="profile-textarea" id="profile-bio">Mi piace partecipare alle attività di gruppo, ascoltare musica e tenere traccia dei miei progressi quotidiani.</textarea>
+            </div>
+          </div>
+
+          <div class="profile-actions-row profile-actions-bottom">
+            <button type="button" class="profile-btn primary" id="profile-save"><i class="ti ti-device-floppy" style="font-size:14px"></i> Salva modifiche</button>
+            <button type="button" class="profile-btn secondary" id="profile-reset-fields"><i class="ti ti-refresh" style="font-size:14px"></i> Ripristina dati</button>
+          </div>
+        </div>
+
+        <div class="profile-settings-card">
+          <div class="section-head">
+            <h2 class="section-title"><i class="ti ti-accessibility" aria-hidden="true"></i>Preferenze di lettura</h2>
+          </div>
+          <div class="profile-settings-grid">
+            <div class="profile-field">
+              <label class="profile-label" for="profile-font-family">Font</label>
+              <select class="profile-select" id="profile-font-family">
+                <option value="nunito">Nunito</option>
+                <option value="lexend">Lexend</option>
+                <option value="atkinson">Atkinson Hyperlegible</option>
+                <option value="open-dyslexic">OpenDyslexic / Arial</option>
+              </select>
+            </div>
+            <div class="profile-field">
+              <label class="profile-label" for="profile-line-height">Interlinea</label>
+              <select class="profile-select" id="profile-line-height">
+                <option value="1.2">Stretta</option>
+                <option value="1.45" selected>Normale</option>
+                <option value="1.7">Ampia</option>
+              </select>
+            </div>
+            <div class="profile-field profile-span-2">
+              <label class="profile-label">Tema</label>
+              <div class="profile-theme-toggle" role="radiogroup" aria-label="Tema della pagina">
+                <button type="button" class="theme-btn" id="theme-light" aria-pressed="true">Chiaro</button>
+                <button type="button" class="theme-btn" id="theme-dark" aria-pressed="false">Scuro</button>
+              </div>
+            </div>
+            <div class="profile-field profile-span-2">
+              <label class="profile-label">Grandezza del font</label>
+              <div class="a11y-font-controls" role="group" aria-label="Dimensione font">
+                <button type="button" id="font-decrease" class="a11y-font-btn" aria-label="Riduci dimensione testo">A-</button>
+                <span id="font-scale-value" class="a11y-font-value" aria-live="polite">100%</span>
+                <button type="button" id="font-increase" class="a11y-font-btn" aria-label="Aumenta dimensione testo">A+</button>
+                <button type="button" id="font-reset" class="a11y-font-btn" aria-label="Ripristina dimensione testo">Reset</button>
+              </div>
+            </div>
+          </div>
+          <p class="profile-settings-note">Le modifiche si applicano subito e restano salvate sul dispositivo.</p>
+        </div>
+
+        <div class="profile-settings-card house-rules-card">
+          <div class="section-head">
+            <h2 class="section-title"></i>Regole della casa</h2>
+          </div>
+          <p class="house-rules-intro">Poche semplici regole, utili ogni giorno.</p>
+          <div class="house-rules-grid" role="list" aria-label="Regole della casa">
+            <article class="house-rule" role="listitem">
+              <img class="house-rule-img" src="imgs/rifare_letto.png" alt="Letto sistemato">
+              <div class="house-rule-body">
+                <div class="house-rule-title">Ordine al mattino</div>
+                <div class="house-rule-text">Rifai il letto e tieni in ordine la tua stanza.</div>
+              </div>
+            </article>
+            <article class="house-rule" role="listitem">
+              <img class="house-rule-img" src="imgs/pulire_bagno.png" alt="Bagno pulito">
+              <div class="house-rule-body">
+                <div class="house-rule-title">Spazi puliti</div>
+                <div class="house-rule-text">Dopo l'uso, lascia il bagno pulito e pronto per tutti.</div>
+              </div>
+            </article>
+            <article class="house-rule" role="listitem">
+              <img class="house-rule-img" src="imgs/cucinare.png" alt="Cucina">
+              <div class="house-rule-body">
+                <div class="house-rule-title">Cucina con cura</div>
+                <div class="house-rule-text">Aiuta con i pasti e rispetta gli orari comuni.</div>
+              </div>
+            </article>
+            <article class="house-rule" role="listitem">
+              <img class="house-rule-img" src="imgs/no_smoke.png" alt="No fumo">
+              <div class="house-rule-body">
+                <div class="house-rule-title">Zero alcool e fumo</div>
+                <div class="house-rule-text">Niente alcool o sigarette negli spazi della casa.</div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+
+    </div>
+
+    <div class="bottom-nav" role="tablist" aria-label="Navigazione principale">
+      <div class="nav-item active" id="nav-tasks" role="tab" aria-selected="true" aria-controls="panel-tasks" tabindex="0" onclick="switchTab('tasks')" onkeydown="handleTabKeydown(event, 'tasks')">
+        <div class="nav-ico-wrap" aria-hidden="true"><i class="ti ti-clipboard-list"></i></div>
+        <span class="nav-label">Da fare</span>
+      </div>
+      <div class="nav-item" id="nav-premi" role="tab" aria-selected="false" aria-controls="panel-premi" tabindex="-1" onclick="switchTab('premi')" onkeydown="handleTabKeydown(event, 'premi')">
+        <div class="nav-ico-wrap" aria-hidden="true"><i class="ti ti-trophy"></i></div>
+        <span class="nav-label">Premi</span>
+      </div>
+      <div class="nav-item" id="nav-agenda" role="tab" aria-selected="false" aria-controls="panel-agenda" tabindex="-1" onclick="switchTab('agenda')" onkeydown="handleTabKeydown(event, 'agenda')">
+        <div class="nav-ico-wrap" aria-hidden="true"><i class="ti ti-calendar"></i></div>
+        <span class="nav-label">Agenda</span>
+      </div>
+      <div class="nav-item" id="nav-notifiche" role="tab" aria-selected="false" aria-controls="panel-notifiche" tabindex="-1" onclick="switchTab('notifiche')" onkeydown="handleTabKeydown(event, 'notifiche')">
+        <div class="nav-ico-wrap" style="position:relative" aria-hidden="true"><i class="ti ti-bell"></i><div class="nav-dot"></div></div>
+        <span class="nav-label">Notifiche</span>
+      </div>
+      <div class="nav-item" id="nav-anonymous" role="tab" aria-selected="false" aria-controls="panel-anonymous" tabindex="-1" onclick="switchTab('anonymous')" onkeydown="handleTabKeydown(event, 'anonymous')">
+        <div class="nav-ico-wrap" aria-hidden="true"><i class="ti ti-mail"></i></div>
+        <span class="nav-label">Messaggio</span>
+      </div>
+      <div class="nav-item" id="nav-profilo" role="tab" aria-selected="false" aria-controls="panel-profilo" tabindex="-1" onclick="switchTab('profilo')" onkeydown="handleTabKeydown(event, 'profilo')">
+        <div class="nav-ico-wrap" aria-hidden="true"><i class="ti ti-user-circle"></i></div>
+        <span class="nav-label">Profilo</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/appointments.js"></script>
+<script src="js/typography.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/tasks.js"></script>
+<script src="js/agenda.js"></script>
+<script src="js/messaging.js"></script>
+</body>
+</html>
